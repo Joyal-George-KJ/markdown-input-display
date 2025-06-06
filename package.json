@@ -1,24 +1,27 @@
 {
   "name": "markdown-input-display",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+  "version": "1.0.1",
+  "main": "index.ts",
+  "types": "index.ts",
+  "files": [
+    "src",
+    "index.ts"
+  ],
+  "keywords": [
+    "markdown",
+    "react",
+    "preview",
+    "editor"
+  ],
+  "author": "Joyal George KJ",
+  "license": "MIT",
+  "description": "A markdown input and preview component for React/Next.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Joyal-George-KJ/markdown-input-display"
   },
-  "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.3.3"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+  "peerDependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   }
 }

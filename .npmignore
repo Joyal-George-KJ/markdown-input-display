@@ -1,0 +1,7 @@
+.next
+node_modules
+pages
+public
+tsconfig.json
+README.md
+*.test.*
