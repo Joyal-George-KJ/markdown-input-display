@@ -3,10 +3,19 @@
 import React, { useRef, useState } from "react";
 import MarkdownPreview from "./MarkdownPreview";
 
-type MarkdownShortcut = {
-    transform: (selected: string) => string;
-    icon: () => React.JSX.Element;
-};
+type MarkdownShortcutIcon = Record<
+    string,
+    {
+        icon: () => React.JSX.Element;
+    }
+>;
+
+type MarkdownShortcutFunctions = Record<
+    string,
+    {
+        transform: (selected: string) => string;
+    }
+>;
 
 const markdownShortcuts: Record<string, MarkdownShortcut> = {
     h1: {
