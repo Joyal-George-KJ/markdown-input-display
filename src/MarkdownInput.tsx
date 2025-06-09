@@ -17,9 +17,63 @@ type MarkdownShortcutFunctions = Record<
     }
 >;
 
-const markdownShortcuts: Record<string, MarkdownShortcut> = {
+const markdownShortcuts: MarkdownShortcutFunctions = {
     h1: {
         transform: (s: string) => `\n#${s}\n`,
+    },
+    h2: {
+        transform: (s: string) => `\n##${s}\n`,
+    },
+    h3: {
+        transform: (s: string) => `\n###${s}\n`,
+    },
+    h4: {
+        transform: (s: string) => `\n####${s}\n`,
+    },
+    h5: {
+        transform: (s: string) => `\n#####${s}\n`,
+    },
+    h6: {
+        transform: (s: string) => `\n######${s}\n`,
+    },
+    b: {
+        transform: (s: string) => `**${s}**`,
+    },
+    i: {
+        transform: (s: string) => `*${s}*`,
+    },
+    highlight: {
+        transform: (s: string) => `===${s}===`,
+    },
+    hr: {
+        transform: () => `\n---\n`,
+    },
+    code: {
+        transform: (s: string) => `\`${s}\``,
+    },
+    braces: {
+        transform: (s: string) => `\n\`\`\`\n${s}\n\`\`\`\n`,
+    },
+    link: {
+        transform: (s: string) => `[${s || "title"}](https://example.com)`,
+    },
+    image: {
+        transform: (s: string) => `![${s || "alt text"}](image.jpg)`,
+    },
+    q: {
+        transform: (s: string) => `>${s}`,
+    },
+    ol: {
+        transform: (s: string) => `1.${s}`,
+    },
+    ul: {
+        transform: (s: string) => `-${s}`,
+    },
+};
+
+export default function MarkdownInput({
+    markdownShortcutIcons: MarkdownShortcutIcon = {
+        h1: {
         icon: () => (
             <svg
                 xmlns="http://www.w3.org/2000/svg"
