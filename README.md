@@ -1,23 +1,34 @@
 # 📦 markdown-input-display
 
-A simple React-based Markdown input and preview component. Perfect for building markdown editors in React or Next.js projects without needing external dependencies.
+A lightweight and customizable **React/Next.js** Markdown editor and preview component — **zero dependencies**, full flexibility, and blazing-fast rendering.
 
----
-
-![npm](https://img.shields.io/npm/v/markdown-input-display)
-![license](https://img.shields.io/npm/l/markdown-input-display)
+![npm](https://img.shields.io/npm/v/markdown-input-display?color=blue)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/markdown-input-display)
 ![react](https://img.shields.io/badge/react-compatible-blue)
 ![nextjs](https://img.shields.io/badge/next.js-supported-0070f3)
+![license](https://img.shields.io/npm/l/markdown-input-display)
+![issues](https://img.shields.io/github/issues/Joyal-George-KJ/markdown-input-display)
+![pull requests](https://img.shields.io/github/issues-pr/Joyal-George-KJ/markdown-input-display)
+![contributors](https://img.shields.io/github/contributors/Joyal-George-KJ/markdown-input-display)
 
 ---
 
-## ✨ Features
+## ✨ Overview
 
-- Markdown Input with formatting toolbar
-- Live Preview support
-- Supports headings, bold, italics, code blocks, links, images, lists, and more
-- Zero configuration required
-- Built using plain React — compatible with Next.js
+`markdown-input-display` is a plug-and-play **Markdown input with live preview**, designed specifically for React and Next.js environments. It includes a set of composable components, a custom hook for Markdown-to-HTML conversion, and full styling and icon override capabilities.
+
+---
+
+## 🚀 Features
+
+- ⚛️ Built with plain React — no external dependencies
+- 🖊️ Editable Markdown input with toolbar shortcuts
+- ⚡ Real-time preview mode
+- 🧩 Highly customizable via props and styles
+- 🧠 Easy-to-use `useMarkdown` hook for conversion
+- 🧰 Pluggable icons (SVGs)
+- 🎨 Flexible styling with full control over internal elements
+- 💼 Ideal for web apps, documentation tools, blogs, note editors, etc.
 
 ---
 
@@ -25,9 +36,9 @@ A simple React-based Markdown input and preview component. Perfect for building 
 
 ```bash
 npm install markdown-input-display
-```
+````
 
-or with Yarn:
+or
 
 ```bash
 yarn add markdown-input-display
@@ -35,23 +46,159 @@ yarn add markdown-input-display
 
 ---
 
-## 🚀 Usage
+## 📁 Components & API
 
-### 1. Import the components
+### 1️⃣ `MarkdownInput`
+
+The Markdown input editor with customizable toolbar and style.
+
+#### Props:
+
+| Prop             | Type                                  | Description                              |
+| ---------------- | ------------------------------------- | ---------------------------------------- |
+| `md`             | `string`                              | Markdown input string                    |
+| `setMd`          | `Dispatch<SetStateAction<string>>`    | Function to update `md`                  |
+| `showPreview`    | `boolean`                             | Toggle for showing preview               |
+| `setShowPreview` | `Dispatch<SetStateAction<boolean>>`   | Function to toggle preview state         |
+| `svgIcons`       | `Record<string, JSX.Element>`         | Custom SVG icons for the toolbar buttons |
+| `style`          | `Record<string, React.CSSProperties>` | Custom styles for editor and toolbar     |
+
+---
+
+### 2️⃣ `MarkdownPreview`
+
+Renders the converted HTML content in a preview pane.
+
+#### Props:
+
+| Prop      | Type         | Description                                 |
+| --------- | ------------ | ------------------------------------------- |
+| `md`      | `string`     | HTML string to preview (from `useMarkdown`) |
+| `onClose` | `() => void` | Function to close the preview               |
+
+---
+
+### 3️⃣ `useMarkdown`
+
+A simple hook to convert a marked Markdown string into HTML.
+
+#### Usage:
 
 ```tsx
-import { MarkdownInput, MarkdownPreview } from "markdown-input-display";
+const html = useMarkdown(markdown);
 ```
 
-### 2. Use in your component
+#### Parameters:
+
+| Param | Type     | Description                |
+| ----- | -------- | -------------------------- |
+| `md`  | `string` | Markdown string to convert |
+
+#### Returns:
+
+| Return | Type     | Description             |
+| ------ | -------- | ----------------------- |
+| `html` | `string` | HTML output as a string |
+
+---
+
+## 🎨 Style Customization
+
+You can override styles using the `style` prop.
+
+```tsx
+const customStyle = {
+  wrapper: { backgroundColor: "#f9f9f9" },
+  editor: { border: "1px solid #ddd" },
+  toolbar: { background: "#fff" },
+  toolbarButtons: { gap: "10px" },
+  toolbarBtn: { color: "#555" },
+  input: { padding: "10px" },
+  preview: { padding: "20px" },
+  closeBtn: { backgroundColor: "red", color: "#fff" },
+};
+```
+
+### Available Style Keys
+
+```ts
+{
+  wrapper,
+  editor,
+  toolbar,
+  toolbarButtons,
+  toolbarBtn,
+  toolbarBtnHover,
+  input,
+  preview,
+  closeBtn,
+  output,
+}
+```
+
+---
+
+## 🧩 SVG Customization
+
+Pass your own icon set to replace the default toolbar icons.
+
+```tsx
+const icons = {
+  h1: {
+    icon: () => (
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M7.648 13V3H6.3v4.234H1.348V3H0v10h1.348V8.421H6.3V13zM14 13V3h-1.333l-2.381 1.766V6.12L12.6 4.443h.066V13z" />
+      </svg>
+    ),
+  },
+  b,
+  i,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  code,
+  highlight,
+  braces,
+  link,
+  image,
+  q,
+  hr,
+  ul,
+  ol,
+  preview,
+};
+```
+
+Each key should map to an object with an `icon` function that returns a JSX SVG.
+
+---
+
+## ✅ Supported Markdown
+
+* Headings: `#` through `######`
+* **Bold**: `**text**`
+* *Italics*: `*text*`
+* Code: `` `inline` `` and code blocks
+* Blockquotes: `> text`
+* Links: `[title](https://example.com)`
+* Images: `![alt](image.jpg)`
+* Lists: `- item`, `1. item`
+* Custom: `===highlight===` ➝ `<mark>highlight</mark>`
+
+---
+
+## 🔧 Example Usage
 
 ```tsx
 import { useState } from "react";
-import { MarkdownInput, MarkdownPreview } from "markdown-input-display";
+import { MarkdownInput, MarkdownPreview, useMarkdown } from "markdown-input-display";
 
 export default function App() {
-  const [md, setMd] = useState("");
+  const [md, setMd] = useState("# Hello Markdown!");
   const [showPreview, setShowPreview] = useState(false);
+  const html = useMarkdown(md);
 
   return (
     <div>
@@ -60,13 +207,14 @@ export default function App() {
         setMd={setMd}
         showPreview={showPreview}
         setShowPreview={setShowPreview}
+        svgIcons={/* optional custom icons */}
+        style={/* optional custom styles */}
       />
 
       {showPreview && (
         <MarkdownPreview
-          md={md}
-          showPreview={showPreview}
-          setShowPreview={setShowPreview}
+          md={html}
+          onClose={() => setShowPreview(false)}
         />
       )}
     </div>
@@ -76,69 +224,51 @@ export default function App() {
 
 ---
 
-## 🧠 Props
+## 🔭 Roadmap
 
-### `<MarkdownInput />`
-
-| Prop            | Type                             | Description                        |
-|-----------------|----------------------------------|------------------------------------|
-| `md`            | `string`                         | Markdown content                   |
-| `setMd`         | `Dispatch<SetStateAction<string>>` | Setter for markdown content        |
-| `showPreview`   | `boolean`                        | Toggle for preview display         |
-| `setShowPreview`| `Dispatch<SetStateAction<boolean>>` | Setter for preview toggle         |
-
-### `<MarkdownPreview />`
-
-| Prop            | Type                             | Description                        |
-|-----------------|----------------------------------|------------------------------------|
-| `md`            | `string`                         | Markdown content to render         |
-| `showPreview`   | `boolean`                        | Controls visibility                |
-| `setShowPreview`| `Dispatch<SetStateAction<boolean>>` | Setter to hide preview (optional) |
+* ✅ Live Preview Toggle
+* 🔄 Efficient internal state handling
+* ✍️ More Markdown marker support (tables, checkboxes, etc.)
+* 💻 Improved editing experience (drag-drop, file upload)
+* 🧪 Tests and CI/CD pipeline
+* 📚 Storybook-based documentation
 
 ---
 
-## ✅ Supported Markdown
+## 🤝 Contributing
 
-- Headings: `#` through `######`
-- Bold: `**text**`
-- Italics: `*text*`
-- Code: `` `inline` `` and code blocks
-- Blockquote: `> quote`
-- Links: `[title](https://example.com)`
-- Images: `![alt](image.jpg)`
-- Lists: `- item` and `1. item`
-- Custom: `===highlight===` becomes `<mark>`
+Contributions, issues, and feature requests are welcome!
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feat/AmazingFeature`)
+3. Commit your changes (`git commit -m 'feat: Add amazing feature'`)
+4. Push to the branch (`git push origin feat/AmazingFeature`)
+5. Open a Pull Request
+
+You can also suggest improvements by opening an issue.
 
 ---
 
-## 🧪 Example
+## 👥 Contributors
 
-Here’s a quick preview of supported syntax:
+Thanks to these amazing people for helping grow the project:
 
-```markdown
-# Heading 1
+<a href="https://github.com/Joyal-George-KJ/markdown-input-display/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Joyal-George-KJ/markdown-input-display" />
+</a>
 
-**Bold text**
-
-*Italic text*
-
-> Blockquote
-
-`inline code`
-
-```
-code block
-```
-
-[Link](https://example.com)
-
-![Alt Text](image.jpg)
-
-===highlight===
-```
-
+> Special thanks to [ChatGPT](https://openai.com/chatgpt) for readme design and documentation assistance! ✨
 ---
 
 ## 📄 License
 
-MIT License — free to use in any project.
+This project is licensed under the **MIT License** — free to use and modify in personal or commercial projects.
+
+---
+
+## 🌐 Links
+
+* 🔗 [Live Demo (Coming Soon)]()
+* 📚 [Documentation (Coming Soon)]()
+* 🐛 [Report Issues](https://github.com/Joyal-George-KJ/markdown-input-display/issues)
+* 🌟 Star this repo if you find it helpful!
