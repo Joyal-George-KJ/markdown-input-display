@@ -258,6 +258,9 @@ Thanks to these amazing people for helping grow the project:
 <a href="https://github.com/Joyal-George-KJ/markdown-input-display/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Joyal-George-KJ/markdown-input-display" />
 </a>
+<a href="https://chatgpt.com/">
+  <img src="https://play-lh.googleusercontent.com/lmG9HlI0awHie0cyBieWXeNjpyXvHPwDBb8MNOVIyp0P8VEh95AiBHtUZSDVR3HLe3A" width="64" height="64" style="border-radius: 64px" />
+</a>
 
 > Special thanks to [ChatGPT](https://openai.com/chatgpt) for readme design and documentation assistance! ✨
 ---
