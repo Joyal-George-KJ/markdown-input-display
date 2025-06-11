@@ -6,8 +6,8 @@ type MarkdownShortcutIcon = Record<string, {
 type MarkdownInputProps = {
     md: string;
     setMd: React.Dispatch<React.SetStateAction<string>>;
-    style?: Partial<typeof defaultStyles>;
+    styles?: Partial<typeof defaultStyles>;
     svgIcons?: MarkdownShortcutIcon;
 };
-export default function MarkdownInput({ svgIcons, style, md, setMd, }: MarkdownInputProps): import("react/jsx-runtime").JSX.Element;
+export default function MarkdownInput({ svgIcons, styles, md, setMd, }: MarkdownInputProps): import("react/jsx-runtime").JSX.Element;
 export {};

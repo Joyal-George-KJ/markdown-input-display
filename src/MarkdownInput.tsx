@@ -21,7 +21,7 @@ type MarkdownShortcutFunctions = Record<
 type MarkdownInputProps = {
     md: string;
     setMd: React.Dispatch<React.SetStateAction<string>>;
-    style?: Partial<typeof defaultStyles>;
+    styles?: Partial<typeof defaultStyles>;
     svgIcons?: MarkdownShortcutIcon;
 };
 
@@ -81,7 +81,7 @@ const markdownShortcuts: MarkdownShortcutFunctions = {
 
 export default function MarkdownInput({
     svgIcons,
-    style,
+    styles,
     md,
     setMd,
 }: MarkdownInputProps) {
@@ -90,7 +90,7 @@ export default function MarkdownInput({
 
     const mergedStyles: Partial<typeof defaultStyles> = {
         ...defaultStyles,
-        ...style,
+        ...styles,
     };
 
     const markdownShortcutIcons: MarkdownShortcutIcon = {

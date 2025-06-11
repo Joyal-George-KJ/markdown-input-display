@@ -71,10 +71,11 @@ Renders the converted HTML content in a preview pane.
 
 #### Props:
 
-| Prop      | Type         | Description                                 |
-| --------- | ------------ | ------------------------------------------- |
-| `md`      | `string`     | HTML string to preview (from `useMarkdown`) |
-| `onClose` | `() => void` | Function to close the preview               |
+| Prop      | Type                                  | Description                                 |
+| --------- | ------------------------------------- | ------------------------------------------- |
+| `md`      | `string`                              | HTML string to preview (from `useMarkdown`) |
+| `onClose` | `() => void`                          | Function to close the preview               |
+| `styles`  | `Record<string, React.CSSProperties>` | Custom styles for Preview                   |
 
 ---
 
@@ -215,6 +216,7 @@ export default function App() {
         <MarkdownPreview
           md={html}
           onClose={() => setShowPreview(false)}
+          styles={/* optional custom styles */}
         />
       )}
     </div>
